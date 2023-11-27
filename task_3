@@ -10,6 +10,7 @@
 # /home/oracle/scripts  
 # ./oracle/scripts
 # scripts
+
 BASEDIR=`dirname $0`
 PROJECT_PATH=`cd $BASEDIR; pwd`
 echo $PROJECT_PATH
