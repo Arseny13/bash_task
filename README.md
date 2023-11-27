@@ -1,5 +1,8 @@
 # Задачи по bash
 
+Перед запуском надо сделать файлы исполняемыми 
+chmod +x ./filename
+
 <details>
 
 <summary>
@@ -34,14 +37,21 @@
  Скрипт, выводящий полный и относительный путь до директории, а также имя директории, в которой он находится. Например:
 /home/oracle/scripts/script.sh - тут лежит скрипт
 #переходим,например, в дирку home
+```
 cd /home
-#запускаем скрипт
-./oracle/scripts/script.sh
-#скрипт выведет 3 строки
-/home/oracle/scripts  
-./oracle/scripts
-scripts
 
+#запускаем скрипт
+
+./oracle/scripts/script.sh
+
+#скрипт выведет 3 строки
+
+/home/oracle/scripts  
+
+./oracle/scripts
+
+scripts
+```
 </details>
 
 
