@@ -33,11 +33,9 @@ else echo "нет 3го параметра"; fi
 
 # if [ -d $1 ] &&  [ -d $2 ] ; then 
 if [ targer1 ] &&  [ targer2 ] ; then 
-# echo "2 папки"
 cd "$1"
 time=$(( $3 * 60 ))
-for file in $(find . -type f -size "+$3c" -cmin +$time)
-do
-cp $file "../$2"
+find . -type f -size "+$3c" -cmin +$time | while read file; do
+cp "$file" "../$2"
 done
 fi
