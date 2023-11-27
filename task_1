@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Написать скрипт, который принимает 2 параметра:
+# имя директории, строка текста
+# Скрипт выводит список имён файлов из заданной директории, в которых содержится заданная строка текста
+for direct in $(find ~/ -name $1 -type d)
+do
+cd $direct
+for file in $(ls)
+do 
+if [ -f $file ]
+then
+if grep "\<$2\>" $file -q ; then
+echo $file
+fi
+fi
+done
+done

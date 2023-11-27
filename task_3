@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#  Скрипт, выводящий полный и относительный путь до директории, а также имя директории, в которой он находится. Например:
+# /home/oracle/scripts/script.sh - тут лежит скрипт
+# #переходим,например, в дирку home
+# cd /home
+# #запускаем скрипт
+# ./oracle/scripts/script.sh
+# #скрипт выведет 3 строки
+# /home/oracle/scripts  
+# ./oracle/scripts
+# scripts
+BASEDIR=`dirname $0`
+PROJECT_PATH=`cd $BASEDIR; pwd`
+echo $PROJECT_PATH
+echo $BASEDIR
+basename "$PROJECT_PATH"

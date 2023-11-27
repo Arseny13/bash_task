@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Скрипт принимает на вход 1 параметр - имя директории. 
+# Проверить, что переданный параметр является существующей директорией.
+# Если это так - вывести имена файлов из директории,
+# которые содержит наибольшее количество строк.
+
+
+if [ -d $1 ]
+then
+list=()
+max=0
+cd $1
+# echo $( ls -p | grep -v / )  
+for file in $( find . -maxdepth 1 -type f )
+do 
+count_line=$(wc -l < $file)
+if [ $max -lt $count_line ]
+then 
+max=$count_line
+list=( $file )
+elif [ $max -eq $count_line ]
+then 
+list+=( $file )
+fi
+done
+echo ${list[@]}
+else
+echo "$1 не является папкой"
+fi
