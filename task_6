@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Скрипт-архиватор, который находит в директории и её поддиректориях $1 файлы(и только файлы)
+# по заданной маске $2, дата изменения которых старше, чем $3 часов от текущего момента, 
+# архивирует их в файл с именем <текущая_дата>_<текущее_время>_<basename $1>.tar.gz и помещает его в директорию $4.
+# При этом, удаляет файлы из директории $1.
+
+date=$(date +"%d%m%Y_%M%H%S")
+re='^[0-9]+$'
+if [ -n "$1" ] && [ -d "$1" ]; then : ; else echo "нет 1го параметра"; exit 1 ;  fi
+if [ -n "$2" ]; then : ; else echo "нет 2го параметра"; exit 1 ;  fi
+if [ -n "$4" ] && [ -d "$4" ]; then : ; else echo "нет 4го параметра"; exit 1 ;  fi
+
+
+if [ -n "$3" ]; then
+if ! [[ $3 =~ $re ]] ; then
+   echo "3 параметр=$3 : не число" >&2; exit 1 ; fi
+else echo "нет 3го параметра"; exit 1 ; fi
+
+
+archive_name="($date)basename"$1".tar.gz"
+tar  $archive_name
+cd $1
+time=$(( $3 * 60 ))
+find . -type f -name "$2" -cmin +$time  | xargs tar -czvf $archive_name  | xargs rm
+mv $archive_name "../$4"
