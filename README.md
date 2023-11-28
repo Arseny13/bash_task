@@ -55,5 +55,42 @@ scripts
 </details>
 
 
+<details>
+
+<summary>
+<b>№4 (<a href="task_4">№4</a>)</b>
+</summary>
+
+Скрипт, такой, что если его запускает не владелец - он предупреждал об этом и падал 
+(именно так, а не снимать права на выполнение у всех, кроме владельца)
+
+cоздание нового пользователя
+useradd test
+запуск за другого пользователя 
+sudo -u test ./task_4
+
+</details>
+
+
+
+<details>
+
+<summary>
+<b>№5 (<a href="task_5">№5</a>)</b>
+</summary>
+
+</details>
+
+
+<details>
+
+<summary>
+<b>№2 (<a href="task_2">№2</a>)</b>
+</summary>
+
+</details>
+
+
+
 # Материалы для обучения 
 - https://habr.com/ru/companies/ruvds/articles/325522/
