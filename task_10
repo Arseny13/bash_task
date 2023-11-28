@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Более сложный кейс. Напиши скрипт, который генерирует скрипт с именем (random 0-10000).sh,
+# внутри которого будет бесконечный цикл, и сразу же его запускает.
+# Научись убивать дочерний скрипт из другого окна консоли, не убивая основной.
+# kill $(ps --ppid  $(ps axu | grep  task_10 | awk '{ print $2 }' ) | grep -v "PID" | awk '{ print $1 }')
+
+while :
+do
+echo "infinity cycle 1"
+echo generate new file
+random=$(shuf -i 0-10000 -n 1)
+touch "$random.sh"
+cat > "$random.sh" << EOF
+#!/bin/bash
+while :
+do 
+echo "infinity cycle 2"
+sleep 100
+done
+EOF
+chmod +x ./$random.sh
+./$random.sh
+
+sleep 30
+done
+

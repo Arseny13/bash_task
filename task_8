@@ -1,0 +1,33 @@
+#!/bin/bash
+#  Напиши скрипт мониторинга размера папки. 
+#  Проверяет размер каждые 10 секунд и если 3 раза подряд размер вырастал более,
+#  чем на 5% - создает файл warning.flg. Передавай все настройки через параметры.
+
+if [ -n "$1" ] && [ -d "$1" ]; then : ; else echo "нет 1го параметра"; exit 1 ;  fi
+
+size=$(du "$1" | cut -f1)
+target=0
+count=0
+while [ $target -eq  0 ]
+do 
+
+for (( b = 1; b <= 3; b++ ))
+do
+sleep 10
+new_size=$(du "$1" | cut -f1)
+percent=$(bc <<< "scale=2;$size*1.05")
+if [[ $(echo "${new_size} > ${percent}" | bc) -eq 1 ]]; then
+echo targer1
+target=1
+
+else
+break
+fi
+size=$new_size
+done
+if [ $target -eq 1 ]
+then
+touch warning.flg
+fi
+
+done

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Напиши скрипт, который уйдет в бесконечный цикл. Научись убивать его из другого окна консоли.
+
+# kill $(ps axu | grep  -m1 task_9 | awk '{ print $2 }' )
+
+echo "PID этого скрипта: $$"
+while :
+do 
+echo infinity cycle
+sleep 10
+done
